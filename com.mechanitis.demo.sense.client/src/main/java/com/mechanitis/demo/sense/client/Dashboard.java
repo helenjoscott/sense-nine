@@ -21,7 +21,6 @@ public class Dashboard extends Application {
         // wire up the models to the services they're getting the data from
         ClientEndpoint userEndpoint = new ClientEndpoint("ws://localhost:8083/users/");
 
-        userEndpoint.subscribe(leaderboardData);
 
         // initialise the UI
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
