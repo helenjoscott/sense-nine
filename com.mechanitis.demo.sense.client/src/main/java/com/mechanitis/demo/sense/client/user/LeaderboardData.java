@@ -56,23 +56,4 @@ public class LeaderboardData {
         return items;
     }
 
-    @Override
-    public void onSubscribe(Flow.Subscription subscription) {
-        
-    }
-
-    @Override
-    public void onNext(String item) {
-
-    }
-
-    @Override
-    public void onError(Throwable throwable) {
-
-    }
-
-    @Override
-    public void onComplete() {
-
-    }
 }
