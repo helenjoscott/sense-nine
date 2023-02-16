@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
-public class LeaderboardData implements Flow.Subscriber<String> {
+public class LeaderboardData {
     private static final int NUMBER_OF_LEADERS = 16;
     private final Map<String, TwitterUser> allTwitterUsers = new HashMap<>();
     private final ObservableList<TwitterUser> items = observableArrayList();
