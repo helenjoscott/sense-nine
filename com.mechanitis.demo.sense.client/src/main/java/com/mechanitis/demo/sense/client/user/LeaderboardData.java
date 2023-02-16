@@ -16,6 +16,7 @@ public class LeaderboardData {
     private final ObservableList<TwitterUser> items = observableArrayList();
 
     private int minCountForDisplay = 0;
+    private String twitterHandle;
 
     public LeaderboardData() {
         this(NUMBER_OF_LEADERS);
@@ -56,4 +57,27 @@ public class LeaderboardData {
         return items;
     }
 
+    @Override
+    public void onSubscribe(Flow.Subscription subscription) {
+
+    }
+
+    @Override
+    public void onNext(String item) {
+        TwitterUser currentUser = allTwitterUsers.get(twitterHandle);
+        if (currentUser == null){
+            currentUser = new TwitterUser((twitterHandle));
+        }
+        currentUser.getTweetCount();
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+
+    }
+
+    @Override
+    public void onComplete() {
+
+    }
 }
