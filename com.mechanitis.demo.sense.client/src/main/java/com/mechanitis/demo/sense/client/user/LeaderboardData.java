@@ -26,36 +26,6 @@ public class LeaderboardData implements Flow.Subscriber<String> {
                  .forEach(value -> items.add(new TwitterUser("")));
     }
 
-    @Override
-    public void onSubscribe(Flow.Subscription subscription) {
-        subscription.request(Long.MAX_VALUE);
-    }
-
-    @Override
-    public void onNext(String twitterHandle) {
-        TwitterUser currentUser = allTwitterUsers.computeIfAbsent(twitterHandle, TwitterUser::new);
-        int numberOfTweets = currentUser.incrementCount();
-
-        int currentIndex = items.indexOf(currentUser);
-        if (currentIndex >= 0) { //user is displayed
-            if (userNeedsToMoveUpwards(currentUser, currentIndex)) {
-                putUserIntoNewPosition(currentUser, currentIndex);
-            }
-        } else if (userCanBeDisplayed(numberOfTweets)) {
-            putUserIntoNewPosition(currentUser, items.size() - 1);
-        }
-    }
-
-    @Override
-    public void onError(Throwable throwable) {
-        //TODO error handling
-    }
-
-    @Override
-    public void onComplete() {
-
-    }
-
     private int findPositionForUser(TwitterUser currentUser) {
         AtomicInteger positionForNewUser = new AtomicInteger(0);
         items.stream()
@@ -86,4 +56,23 @@ public class LeaderboardData implements Flow.Subscriber<String> {
         return items;
     }
 
+    @Override
+    public void onSubscribe(Flow.Subscription subscription) {
+        
+    }
+
+    @Override
+    public void onNext(String item) {
+
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+
+    }
+
+    @Override
+    public void onComplete() {
+
+    }
 }
