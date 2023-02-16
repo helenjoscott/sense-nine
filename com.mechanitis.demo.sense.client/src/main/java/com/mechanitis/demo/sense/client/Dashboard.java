@@ -20,11 +20,8 @@ public class Dashboard extends Application {
 
         // wire up the models to the services they're getting the data from
         ClientEndpoint userEndpoint = new ClientEndpoint("ws://localhost:8083/users/");
-        userEndpoint.subscribe(leaderboardData);
 
-        ClientEndpoint moodEndpoint = new ClientEndpoint("ws://localhost:8082/moods/");
-        moodEndpoint.subscribe(moodChartData);
-        moodEndpoint.subscribe(happinessChartData);
+        userEndpoint.subscribe(leaderboardData);
 
         // initialise the UI
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
@@ -34,11 +31,7 @@ public class Dashboard extends Application {
 
         // wire up the models to the controllers
         DashboardController dashboardController = loader.getController();
-        dashboardController.getLeaderboardController().setData(leaderboardData);
-        dashboardController.getMoodController().setData(moodChartData);
-        dashboardController.getHappinessController().setData(happinessChartData);
 
-        // let's go!
         primaryStage.setScene(scene);
         primaryStage.show();
     }
